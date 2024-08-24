@@ -57,3 +57,35 @@ Install the necessary dependencies using the following command:
 ```bash
 pip install -r requirements.txt
 ```
+
+## Model Training
+
+This project leverages two powerful gradient boosting algorithms to predict mushroom edibility:
+
+- **XGBoost**: Implemented with GPU acceleration for faster training.
+- **CatBoost**: Known for its excellent handling of categorical features.
+
+### Preprocessing
+
+- **Numerical Features**: Standardized using `StandardScaler` to ensure that all features contribute equally to the model.
+- **Categorical Features**: One-hot encoded using `OneHotEncoder` to convert categorical variables into a format suitable for machine learning algorithms.
+
+### Cross-Validation
+
+- **Stratified K-Fold**: 5-fold cross-validation is employed to ensure robust model performance across different data splits, preserving the proportion of classes in each fold.
+
+### Evaluation
+
+The model's performance is evaluated using the **Matthews correlation coefficient (MCC)**, a metric particularly useful for imbalanced datasets. The MCC provides a balanced measure that takes into account true and false positives and negatives, making it ideal for evaluating binary classification tasks.
+
+### Submission
+
+The predictions are formatted as follows:
+
+```csv
+id,class
+3116945,e
+3116946,p
+3116947,e
+...
+
